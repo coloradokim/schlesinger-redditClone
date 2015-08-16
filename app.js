@@ -8,6 +8,6 @@ app.controller('postController', function ($scope) {
       $scope.author = "";
       $scope.url = "";
       $scope.description = "";
-
+      $scope.rightNow = new Date;
   }
 }) //end of app

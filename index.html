@@ -6,31 +6,44 @@
   <div ng-controller="postController">
     <nav>
       <h2>Reddit Clone</h2>
-      <h3>Submit Post +</h3>
+      <a href="" ng-click="formPost=true"> Submit Post +</a>
+      <button ng-click="formPost=false">Hide</button>
+
       <input type="text" ng-model="search" value="search" placeholder="Search">
-      <h3>Sort by Votes, Date or Time</h3>
+      <label for="select">Sort by</label>
+      <select name="select">
+           <option value = "votes">Votes</option>
+           <option value = "date">Date</option>
+           <option value = "time">Time</option>
+      </select>
     </nav>
 
-    <label for="title">Title</label>
-    <input type="text" ng-model="title">
-    <label for="author">Author</label>
-    <input type="text" ng-model="author">
-    <label for="url">Image URL</label>
-    <input type="text" ng-model="url">
-    <label for="description">Description</label>
-    <textarea name="description" ng-model="description" rows="8" cols="40"></textarea>
-    <input type="submit" ng-click="submitPost()" name="submit" value="Submit Post">
+    <form ng-show="formPost">
+      <label for="title">Title</label>
+      <input type="text" ng-model="title">
+      <!-- <p ng-hide="postForm.$dirty">Hide when Dirty</p> -->
+
+      <label for="author">Author</label>
+      <input type="text" ng-model="author">
+      <label for="url">Image URL</label>
+      <input type="url" ng-model="url">
+      <label for="description">Description</label>
+      <textarea name="description" ng-model="description" rows="8" cols="40"></textarea>
+      <!-- use in submit button: ng-disabled="postForm.$invalid" -->
+      <input type="submit" ng-click="submitPost()" name="submit" value="Submit Post">
+    </form>
 
     <article ng-repeat="post in posts | filter:search">
       <h3>{{post.title}}</h3>
       <h4>{{post.author}}</h4>
       <img style="width:100px" ng-src="{{post.url}}" alt="Picture of {{title}}">
       <p>{{post.description}}</p>
+      <p>Posted on {{ rightNow | date: 'fullDate'}} at {{ rightNow | date: 'shortTime'}}</p>
     </article>
 
   </div>
   <!--end of postController-->
 </body>
-   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
    <script src="app.js"></script>
 </html>
