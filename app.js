@@ -10,4 +10,11 @@ app.controller('postController', function ($scope) {
       $scope.description = "";
       $scope.rightNow = new Date;
   }
+  $scope.comments =[]
+  $scope.submitComment = function () {
+    $scope.comments.push({commentAuthor: $scope.commentAuthor, commentText: $scope.commentText})
+      $scope.commentAuthor = "";
+      $scope.commentText = ""
+
+  }
 }) //end of app

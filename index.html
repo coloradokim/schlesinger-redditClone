@@ -33,6 +33,14 @@
       <input type="submit" ng-click="submitPost()" name="submit" value="Submit Post">
     </form>
 
+    <form name="formComment">
+      <label for="commentAuthor">Author</label>
+      <input type="text" ng-model="commentAuthor">
+      <label for="text">Text</label>
+      <input type="commentText" ng-model="commentText">
+      <input type="submit" ng-click="submitComment()" name="submit" value="Add Comment">
+    </form>
+
     <article ng-repeat="post in posts | filter:search">
       <h3>{{post.title}}</h3>
       <h4>{{post.author}}</h4>
@@ -40,6 +48,7 @@
       <p>{{post.description}}</p>
       <p>Posted on {{ rightNow | date: 'fullDate'}} at {{ rightNow | date: 'shortTime'}}</p>
     </article>
+
 
   </div>
   <!--end of postController-->
