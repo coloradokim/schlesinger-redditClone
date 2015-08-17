@@ -1,6 +1,7 @@
 <html ng-app="redditClone">
 <head>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="public/stylesheets/style.css">
 </head>
 <body>
@@ -32,32 +33,35 @@
     </form>
 
     <article ng-repeat="post in posts | filter:search">
-      <h3>{{post.title}}</h3> <p ng-click="upVote()" style='cursor:pointer'>UP</p><p ng-click="downVote()" style='cursor:pointer'>DOWN</p><span ng-class="{green: vote>0, red:vote<0}">{{vote}}</span>
+      <div ng-controller="voteController">
+        <h3>{{post.title}}</h3><i class="fa fa-long-arrow-up" ng-click="upVote()" style='cursor:pointer'></i><i class="fa fa-long-arrow-down" ng-click="downVote()" style='cursor:pointer'></i> <span ng-class="{green: vote>0, red:vote<0}">{{vote}}</span>
+      </div>
       <h4>{{post.author}}</h4>
       <img style="width:150px" ng-src="{{post.url}}" alt="Picture of {{title}}">
       <p>{{post.description}}</p>
-      <time>Posted on {{ post.date | date }}</time>
-      <!-- the code below is for angularMoment -->
-      <!-- <time title="{{ post.date | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}">{{ post.date | amCalendar }}</time> -->
+        <div ng-controller="commentController">
+          <footer>
+            <i class="fa fa-calendar-o"></i><time>Posted on {{ post.date | date }}</time>
+            <!-- the code below is for angularMoment -->
+            <!-- <time title="{{ post.date | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}">{{ post.date | amCalendar }}</time> -->
+            <i class="fa fa-comment-o">Number of Comments</i>
+            <a href="" ng-click="formComment=true"><i class="fa fa-pencil-square-o">Add Comment</i></a>
+            <button ng-click="formComment=false">Hide</button>
+          </footer>
+            <form ng-show="formComment">
+              <label for="commentAuthor">Author</label>
+              <input type="text" ng-model="commentAuthor">
+              <label for="text">Text</label>
+              <input type="commentText" ng-model="commentText">
+              <input type="submit" ng-click="submitComment()" value="Add Comment">
+            </form>
+              <div class="comments" ng-repeat="comment in comments">
+                <p><strong>{{comment.commentAuthor}}</strong> - {{comment.commentText}}</p>
+              </div>
+          </div> <!-- end of commentController -->
     </article>
+  </div>  <!--end of postController-->
 
-    <form ng-show="formComment">
-      <label for="commentAuthor">Author</label>
-      <input type="text" ng-model="commentAuthor">
-      <label for="text">Text</label>
-      <input type="commentText" ng-model="commentText">
-      <input type="submit" ng-click="submitComment()" name="submit" value="Add Comment">
-    </form>
-
-    <article class="comments" ng-repeat="comment in comments">
-      <p><strong>{{comment.commentAuthor}}</strong> - {{comment.commentText}}</p>
-    </article>
-    <a href="" ng-click="formComment=true">Add Comment</a>
-    <button ng-click="formComment=false">Hide</button>
-
-
-  </div>
-  <!--end of postController-->
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.10.2/angular-moment.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.10.2/angular-moment.min.js"></script>
