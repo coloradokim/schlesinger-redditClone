@@ -45,7 +45,12 @@
             <i class="fa fa-calendar-o"></i><time>Posted on {{ post.date | date }}</time>
             <!-- the code below is for angularMoment -->
             <!-- <time title="{{ post.date | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}">{{ post.date | amCalendar }}</time> -->
-            <i class="fa fa-comment-o">Number of Comments</i>
+            <i class="fa fa-comment-o">
+            <ng-pluralize  count="comments.length"
+                        when="{'1': '1 comment',
+                              'other': '{} comments'}"></ng-pluralize></i>
+
+
             <a href="" ng-click="formComment=true"><i class="fa fa-pencil-square-o">Add Comment</i></a>
           </footer>
             <form name="form" ng-show="formComment" novalidate>
