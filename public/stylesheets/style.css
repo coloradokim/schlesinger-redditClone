@@ -46,4 +46,41 @@ table {
   border-spacing: 0; }
 
 body {
-  font-family: 'Open Sans', sans-serif; }
+  margin: 3px;
+  font-family: 'Open Sans', sans-serif;
+  color: #03191E; }
+
+h1 {
+  font-size: 3em; }
+
+h2 {
+  font-size: 2.5em; }
+
+h3 {
+  font-size: 2em; }
+
+h4 {
+  font-size: 1.5em; }
+
+h5 {
+  font-size: 1em; }
+
+h6 {
+  font-size: .75em; }
+
+a {
+  text-decoration: none;
+  font-size: 1.5em; }
+
+nav {
+  height: 7em;
+  background-color: #C1CFDA;
+  border-radius: 4px; }
+  nav h1 {
+    display: inline-block; }
+
+article {
+  background-color: #C1CFDA;
+  margin-right: 4.5em;
+  margin-left: 4.5em;
+  border-radius: 4px; }
