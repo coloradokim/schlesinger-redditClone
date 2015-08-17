@@ -13,10 +13,10 @@
 
       <input type="text" ng-model="search" value="search" placeholder="Search">
       <label for="select">Sort by</label>
-      <select name="select">
-           <option value = "votes">Votes</option>
-           <option value = "date">Date</option>
-           <option value = "time">Time</option>
+      <select ng-model="sort" ng-init="sort = '-vote'">
+           <option value = "-vote">Votes</option>
+           <option value = "-date">Date</option>
+           <option value = "title">Title</option>
       </select>
     </nav>
 
@@ -32,15 +32,17 @@
       <input type="submit" ng-disabled="form.$invalid" ng-click="submitPost()" name="submit" value="Submit Post">
     </form>
 
-    <article ng-repeat="post in posts | filter:search">
+    <article ng-repeat="post in posts | filter:search | orderBy: sort">
       <div ng-controller="voteController">
-        <h3>{{post.title}}</h3><i class="fa fa-long-arrow-up" ng-click="upVote()" style='cursor:pointer'></i><i class="fa fa-long-arrow-down" ng-click="downVote()" style='cursor:pointer'></i> <span ng-class="{green: vote>0, red:vote<0}">{{vote}}</span>
+        <h3>{{post.title}}</h3><i class="fa fa-long-arrow-up" ng-click="upVote()" style='cursor:pointer'></i><i class="fa fa-long-arrow-down" ng-click="downVote()" style='cursor:pointer'></i> <span ng-model="post.vote" ng-class="{green: post.vote>0, red:post.vote<0}">{{post.vote}}</span>
       </div>
+      <!-- end voteController -->
       <h4>{{post.author}}</h4>
       <img style="width:150px" ng-src="{{post.url}}" alt="Picture of {{title}}">
       <p>{{post.description}}</p>
         <div ng-controller="commentController">
           <footer>
+            <h1>{{test}}</h1>
             <i class="fa fa-calendar-o"></i><time>Posted on {{ post.date | date }}</time>
             <!-- the code below is for angularMoment -->
             <!-- <time title="{{ post.date | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}">{{ post.date | amCalendar }}</time> -->

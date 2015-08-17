@@ -20,15 +20,16 @@ app.controller('commentController', function ($scope) {
   $scope.submitComment = function () {
     $scope.comments.push({commentAuthor: $scope.commentAuthor, commentText: $scope.commentText})
       $scope.commentAuthor = "";
-      $scope.commentText = ""  }
+      $scope.commentText = ""
+  }
 }) //end of commentController
 
 app.controller('voteController', function ($scope) {
-  $scope.vote = 0;
+  $scope.post.vote = 0;
   $scope.upVote = function(){
-    $scope.vote++;
+    $scope.post.vote++;
   }
   $scope.downVote = function() {
-    $scope.vote--;
+    $scope.post.vote--;
   }
 }) //end of voteController
