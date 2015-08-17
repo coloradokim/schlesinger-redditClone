@@ -82,6 +82,12 @@ nav {
 form {
   margin: 10px; }
 
+input {
+  display: inline-block; }
+
+label {
+  display: inline-block; }
+
 article {
   background-color: #C1CFDA;
   margin-right: 4.5em;

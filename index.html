@@ -31,7 +31,7 @@
       <input type="submit" ng-disabled="form.$invalid" ng-click="submitPost()" name="submit" value="Submit Post">
     </form>
 
-    <main class="posts" ng-repeat="post in posts | filter:search">
+    <article ng-repeat="post in posts | filter:search">
       <h3>{{post.title}}</h3> <p ng-click="upVote()" style='cursor:pointer'>UP</p><p ng-click="downVote()" style='cursor:pointer'>DOWN</p><span ng-class="{green: vote>0, red:vote<0}">{{vote}}</span>
       <h4>{{post.author}}</h4>
       <img style="width:150px" ng-src="{{post.url}}" alt="Picture of {{title}}">
@@ -39,7 +39,7 @@
       <time>Posted on {{ post.date | date }}</time>
       <!-- the code below is for angularMoment -->
       <!-- <time title="{{ post.date | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}">{{ post.date | amCalendar }}</time> -->
-    </main>
+    </article>
 
     <form ng-show="formComment">
       <label for="commentAuthor">Author</label>
@@ -53,10 +53,7 @@
       <p><strong>{{comment.commentAuthor}}</strong> - {{comment.commentText}}</p>
     </article>
     <a href="" ng-click="formComment=true">Add Comment</a>
-
-
-
-
+    <button ng-click="formComment=false">Hide</button>
 
 
   </div>
