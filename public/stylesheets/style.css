@@ -76,8 +76,8 @@ nav {
   height: 7em;
   background-color: #C1CFDA;
   border-radius: 4px; }
-  nav h1 {
-    display: inline-block; }
+  nav h2 a button {
+    display: inline; }
 
 form {
   margin: 10px; }

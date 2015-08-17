@@ -25,6 +25,4 @@ app.controller('postController', function ($scope) {
       $scope.commentAuthor = "";
       $scope.commentText = ""
   }
-
-
 }) //end of app
