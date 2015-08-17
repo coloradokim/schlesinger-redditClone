@@ -79,6 +79,9 @@ nav {
   nav h1 {
     display: inline-block; }
 
+form {
+  margin: 10px; }
+
 article {
   background-color: #C1CFDA;
   margin-right: 4.5em;

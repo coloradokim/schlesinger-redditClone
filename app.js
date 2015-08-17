@@ -12,6 +12,13 @@ app.controller('postController', function ($scope) {
       $scope.url = "";
       $scope.description = "";
   }
+  $scope.upVote = function(){
+    $scope.vote++;
+  }
+  $scope.downVote = function() {
+    $scope.vote--;
+  }
+  $scope.vote = 0;
   $scope.comments =[]
   $scope.submitComment = function () {
     $scope.comments.push({commentAuthor: $scope.commentAuthor, commentText: $scope.commentText})
