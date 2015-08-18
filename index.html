@@ -34,15 +34,16 @@
     <article class="content" ng-repeat="post in posts | filter:search | orderBy: sort">
       <img class="img" ng-src="{{post.url}}" alt="Picture of {{title}}">
       <div ng-controller="voteController">
-        <h3>{{post.title}}</h3><i class="fa fa-long-arrow-up" ng-click="upVote()" style='cursor:pointer'></i><i class="fa fa-long-arrow-down" ng-click="downVote()" style='cursor:pointer'></i> <span ng-model="post.vote" ng-class="{green: post.vote>0, red:post.vote<0}">{{post.vote}}</span>
-      </div>
-      <!-- end voteController -->
-      <h4>by {{post.author}}</h4>
-      <p>{{post.description}}</p>
+        <h3>{{post.title}}</h3>
+        <i class="fa fa-long-arrow-up fa-4x" ng-click="upVote()" style='cursor:pointer'></i><i class="fa fa-long-arrow-down fa-4x" ng-click="downVote()" style='cursor:pointer'></i><h4 ng-model="post.vote" ng-class="{green: post.vote>0, red:post.vote<0}">{{post.vote}}</h4>
+      </div> <!-- end voteController -->
+      <h5>by {{post.author}}</h5>
+      <p class="postParagraph">{{post.description}}</p>
         <div ng-controller="commentController">
           <footer class="footer">
-            <i class="fa fa-calendar-o fa-2x"></i>
-<time title="{{ post.date | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}">{{ post.date | amCalendar }}</time>            <a href="" ng-click="displayComments = ! displayComments"><i class="fa fa-comment-o">
+            <i class="fa fa-calendar-o fa-3x"></i>
+            <time title="{{ post.date | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}">{{ post.date | amCalendar }}</time>
+            <a href="" ng-click="displayComments = ! displayComments"><i class="fa fa-comment-o">
             <ng-pluralize  count="comments.length"
                             when="{'1': '1 comment',
                                     'other': '{} comments'}"></ng-pluralize></i></a>
@@ -56,7 +57,7 @@
               <input type="submit" ng-disabled="form.$invalid" ng-click="submitComment(); formComment=false; displayComments=true" value="Add Comment">
 
             </form>
-              <div class="comments" ng-repeat="comment in comments" ng-show="displayComments">
+              <div class="comments" ng-repeat="comment in comments" ng-hide="displayComments">
                 <p><strong>{{comment.commentAuthor}}</strong> - {{comment.commentText}}</p>
               </div>
           </div> <!-- end of commentController -->

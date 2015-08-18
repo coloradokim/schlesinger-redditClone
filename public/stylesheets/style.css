@@ -69,14 +69,28 @@ h6 {
   font-size: .75em; }
 
 p {
-  font-size: 1.5em; }
+  font-size: 1.3em;
+  line-height: 1.5; }
 
 a {
   text-decoration: none;
-  font-size: 1.5em; }
+  font-size: 1.5em;
+  color: inherit; }
+
+time {
+  text-decoration: none;
+  font-size: 1.25em;
+  color: inherit; }
 
 .fa {
-  font-size: 1em; }
+  font-size: 1em;
+  padding: 5px; }
+
+.green {
+  color: green; }
+
+.red {
+  color: #941C2F; }
 
 nav {
   height: 5em;
@@ -102,13 +116,22 @@ input {
 
 article {
   width: 75%;
-  background-color: #C1CFDA;
+  background-color: rgba(195, 207, 217, 0.7);
   margin-right: 4.5em;
   margin-left: 4.5em;
   margin-top: 1.5em;
   margin-bottom: 1.5em;
   border-radius: 4px;
   padding: 1em; }
+
+article h3, h4 {
+  display: inline-block; }
+
+article h5 {
+  padding: 1%; }
+
+.postParagraph {
+  padding: 3%; }
 
 .img {
   width: 20%;
@@ -121,4 +144,4 @@ article {
   padding: 1em; }
 
 .footer {
-  padding-top: 18%; }
+  padding-top: 1%; }
