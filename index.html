@@ -11,7 +11,7 @@
       <a href="" ng-click="formPost = ! formPost"><i class="fa fa-plus-square-o"></i>  Submit Post </a>
 
       <input type="text" ng-model="search" value="search" placeholder="Search">
-      <label for="select">Sort by</label>
+      <label class="sortLabel" for="select">Sort by</label>
       <select ng-model="sort" ng-init="sort = '-vote'">
            <option value = "-vote">Votes</option>
            <option value = "-date">Date</option>
@@ -31,20 +31,18 @@
       <input type="submit" ng-disabled="form.$invalid" ng-click="submitPost(); formPost = false;" name="submit" value="Submit Post">
     </form>
 
-    <article ng-repeat="post in posts | filter:search | orderBy: sort">
+    <article class="content" ng-repeat="post in posts | filter:search | orderBy: sort">
+      <img class="img" ng-src="{{post.url}}" alt="Picture of {{title}}">
       <div ng-controller="voteController">
         <h3>{{post.title}}</h3><i class="fa fa-long-arrow-up" ng-click="upVote()" style='cursor:pointer'></i><i class="fa fa-long-arrow-down" ng-click="downVote()" style='cursor:pointer'></i> <span ng-model="post.vote" ng-class="{green: post.vote>0, red:post.vote<0}">{{post.vote}}</span>
       </div>
       <!-- end voteController -->
-      <h4>{{post.author}}</h4>
-      <img style="width:150px" ng-src="{{post.url}}" alt="Picture of {{title}}">
+      <h4>by {{post.author}}</h4>
       <p>{{post.description}}</p>
         <div ng-controller="commentController">
-          <footer>
-            <i class="fa fa-calendar-o fa-2x"></i><time>Posted on {{ post.date | date }}</time>
-            <!-- the code below is for angularMoment -->
-            <!-- <time title="{{ post.date | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}">{{ post.date | amCalendar }}</time> -->
-            <a href="" ng-click="displayComments = ! displayComments"><i class="fa fa-comment-o">
+          <footer class="footer">
+            <i class="fa fa-calendar-o fa-2x"></i>
+<time title="{{ post.date | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}">{{ post.date | amCalendar }}</time>            <a href="" ng-click="displayComments = ! displayComments"><i class="fa fa-comment-o">
             <ng-pluralize  count="comments.length"
                             when="{'1': '1 comment',
                                     'other': '{} comments'}"></ng-pluralize></i></a>
@@ -65,9 +63,9 @@
     </article>
   </div>  <!--end of postController-->
 
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.10.2/angular-moment.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.10.2/angular-moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.10.1/angular-moment.min.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

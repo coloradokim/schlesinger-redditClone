@@ -68,12 +68,15 @@ h5 {
 h6 {
   font-size: .75em; }
 
+p {
+  font-size: 1.5em; }
+
 a {
   text-decoration: none;
   font-size: 1.5em; }
 
-i {
-  font-size: 5em; }
+.fa {
+  font-size: 1em; }
 
 nav {
   height: 5em;
@@ -94,10 +97,28 @@ label {
 input {
   margin: 1em; }
 
+.sortLabel {
+  display: inline; }
+
 article {
+  width: 75%;
   background-color: #C1CFDA;
   margin-right: 4.5em;
   margin-left: 4.5em;
   margin-top: 1.5em;
   margin-bottom: 1.5em;
-  border-radius: 4px; }
+  border-radius: 4px;
+  padding: 1em; }
+
+.img {
+  width: 20%;
+  float: left;
+  padding: 1em; }
+
+.content {
+  width: 85%;
+  float: right;
+  padding: 1em; }
+
+.footer {
+  padding-top: 18%; }
