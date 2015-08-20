@@ -1,8 +1,9 @@
+<!DOCTYPE html>
 <html ng-app="redditClone">
 <head>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="public/stylesheets/style.css">
+  <link rel="stylesheet" href="css/public/stylesheets/style.css">
 </head>
 <body>
   <div ng-controller="postController">
@@ -49,24 +50,29 @@
                                     'other': '{} comments'}"></ng-pluralize></i></a>
             <a href="" ng-click="formComment = ! formComment"><i class="fa fa-pencil-square-o">Add Comment</i></a>
           </footer>
-            <form name="form" ng-show="formComment" novalidate>
-              <label for="commentAuthor">Author</label>
-              <input type="text" ng-model="commentAuthor" required>
-              <label for="text">Text</label>
-              <input type="commentText" ng-model="commentText" required>
-              <input type="submit" ng-disabled="form.$invalid" ng-click="submitComment(); formComment=false; displayComments=true" value="Add Comment">
 
-            </form>
-              <div class="comments" ng-repeat="comment in comments" ng-hide="displayComments">
-                <p><strong>{{comment.commentAuthor}}</strong> - {{comment.commentText}}</p>
-              </div>
-          </div> <!-- end of commentController -->
+          <form name="form" ng-show="formComment" novalidate>
+            <label for="commentAuthor">Author</label>
+            <input type="text" ng-model="commentAuthor" required>
+            <label for="text">Text</label>
+            <input type="commentText" ng-model="commentText" required>
+            <input type="submit" ng-disabled="form.$invalid" ng-click="submitComment(); formComment=false; displayComments=true" value="Add Comment">
+          </form>
+          <div class="comments" ng-repeat="comment in comments" ng-hide="displayComments">
+            <p><strong>{{comment.commentAuthor}}</strong> - {{comment.commentText}}</p>
+          </div>
+        </div> <!-- end of commentController -->
     </article>
   </div>  <!--end of postController-->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.js" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.10.1/angular-moment.min.js"></script>
-  <script src="app.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-route.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/directives.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/services.js"></script>
 </body>
 </html>
